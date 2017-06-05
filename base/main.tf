@@ -70,11 +70,6 @@ data "aws_iam_policy_document" "run_ecs_task_policy_document" {
       "ecs:RunTask",
     ]
     resources = [ "*" ] // We could restrict to a specific task family if we wanted.
-    condition {
-      test = "ArnEquals"
-      variable = "ecs:cluster"
-      values = ["${var.ecs_cluster_id}"]
-    }
   }
 
   statement = {
